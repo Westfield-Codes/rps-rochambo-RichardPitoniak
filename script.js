@@ -40,6 +40,14 @@ function cpuTurn(){
 
 function findWinner(u,c){
     let combo = u+c
+    let match = ""
+    let group = 0
+    winner = ""
+    const winArray = [["r","p","I"]]
+}
+
+/* function findWinner(u,c){
+    let combo = u+c
     switch(combo){
         case "rp":
         winner = "I"
@@ -61,4 +69,4 @@ function findWinner(u,c){
         break
     }
     return winner
-}
+} */
