@@ -16,9 +16,11 @@ function main(){
         c = cpuTurn()
         if ( u == c) {
             alert ("we both chose " + c)
+            main()
         }
     winner = findWinner(u,c)
     alert (" you chose " + u + " I chose " + c + " and " + winner + " won")
+    main()
     }
 }
 
@@ -53,10 +55,10 @@ function findWinner(u,c){
         case "sp":
         winner = "you"
         break
-        case "rs":
+        case "sr":
         winner = "I"
         break
-        case "sr":
+        case "rs":
         winner = "you"
         break
     }
