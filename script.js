@@ -8,77 +8,57 @@
 *     d. Move to next function
 *  3. System Test finished version (does it work right in all conditions?)
 */
-var u =""
-var c =""
+var u = ""
+var c = ""
 function main(){
-    if (u == c){
+    if ( u == c){
         u = userTurn()
         c = cpuTurn()
-        if (u == c) {
+        if ( u == c) {
             alert ("we both chose " + c)
         }
-    }
     winner = findWinner(u,c)
-    alert ("you chose " + u + " I chose " + c + " and " + winner + " won")
-}
-function userTurn(){
-    let choice = prompt (" enter r p or s")
-    if (choice == "r" || choice == "p" || choice == "s" ){
-        return choice
+    alert (" you chose " + u + " I chose " + c + " and " + winner + " won")
     }
-    alert ("invalid input")
-    return userTurn()
 }
+
+function userTurn(){
+   let choice = prompt ("enter an r p or s")
+   if (choice !== "r" && choice !== "p" && choice !== "s"){
+    alert ("invalid input")
+    userTurn()
+   }
+   return choice
+}
+
 function cpuTurn(){
     let choice = Math.floor(Math.random()*2)
-    switch(choice){
-        case 0:
-            return "r"
-        case 1: 
-            return "p"
-        default: 
-        return "s"
-    }
+    if (choice == 0) return "r"
+    else if (choice == 1) return "p"
+    else return "s"
 }
-function findWinner(){
+
+function findWinner(u,c){
     let combo = u+c
     switch(combo){
-        case "rp": {
-            winner = "I"
-            break
-        }
-        case "pr": {
-            winner = "you"
-            break
-        }
-        case "sp": {
-            winner = "you"
-            break
-        }
-        case "ps": {
-            winner = " I "
-            break
-        }
-        case "rs": {
-            winner = "you"
-            break
-        }
-        case "sr": {
-            winner = "I"
-            break
-        }
-        case "rr": {
-            winner = "no one"
-            break
-        }
-        case "pp": {
-            winner = "no one"
-            break
-        }
-        case "ss": {
-            winner = "no one"
-            break
-        }
+        case "rp":
+        winner = "I"
+        break
+        case "pr":
+        winner = "you"
+        break
+        case "ps":
+        winner = "I"
+        break
+        case "sp":
+        winner = "you"
+        break
+        case "rs":
+        winner = "I"
+        break
+        case "sr":
+        winner = "you"
+        break
     }
-    return winner 
+    return winner
 }
