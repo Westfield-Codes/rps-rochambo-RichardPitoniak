@@ -41,11 +41,17 @@ function cpuTurn(){
 function findWinner(u,c){
     let combo = u+c
     let match = ""
-    let group = 0
     winner = ""
-    const winArray = [["r","p","I"]]
+    const winArray = [ ["r","p","I"],["p","r","you"],["p","s","I"]["s","p","you"],["s","r","I"],["r","s","you"] ]
+    for (let i = 0; i<winArray.length; i++){
+        match = winArray[i][0] + winArray[i][1]
+        if (match == combo){
+            winner = winArray[i][2]
+            break
+        }
+    }
+    return winner
 }
-
 /* function findWinner(u,c){
     let combo = u+c
     switch(combo){
