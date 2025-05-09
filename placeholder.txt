@@ -24,18 +24,20 @@ function main(){
         round++
     }
     if (score[0]>score[1]){
-        alert ("you win! The final score was " + score[1] + to + score[2] )
+        alert ("you win")
     }
-    else alert ("the computer wins! The final score was "  + score[1] + to + score[2] )
+    else alert ("the computer wins")
 }
 function rpsRound(){
+  if ( u == c){
         u = userTurn()
         c = cpuTurn()
         if ( u == c) {
-            alert ("we both chose " + c + " no one gets points")
+            alert ("we both chose " + c)
         }
     winner = findWinner(u,c)
     alert (" you chose " + u + " I chose " + c + " and " + winner + " got a point")
+    }
 }
 
 /* function checkHalf(){
