@@ -10,16 +10,43 @@
 */
 var u = ""
 var c = ""
+const score = [0,0]
 function main(){
-    if ( u == c){
+    let rounds = prompt ("how many rounds would you like to play?")
+    if ( rounds%2 == 0) {
+        alert ("the number of rounds has to be odd, try again")
+        main()
+    }
+    let round = "1"
+    while (round <= rounds /* && !checkHalf()*/){
+        alert ("round " + round + " of " + rounds  +"." + " the score is " + score[0] + " to " + score[1])
+        rpsRound()
+        round++
+    }
+}
+function rpsRound(){
+  if ( u == c){
         u = userTurn()
         c = cpuTurn()
         if ( u == c) {
             alert ("we both chose " + c)
         }
     winner = findWinner(u,c)
-    alert (" you chose " + u + " I chose " + c + " and " + winner + " won")
+    alert (" you chose " + u + " I chose " + c + " and " + winner + " got a point")
     }
+}
+
+function checkHalf(){
+if (score[0] > rounds%2){ 
+    winner = " you " 
+    return winner
+}
+else if (score[1] > rounds%2){ 
+    winner = " I "
+    return winner
+}
+else rpsRound()
+return false 
 }
 
 function userTurn(){
@@ -38,7 +65,7 @@ function cpuTurn(){
     else return "s"
 }
 
-function findWinner(u,c){
+/* function findWinner(u,c){
     let combo = u+c
     let match = ""
     winner = ""
@@ -52,27 +79,34 @@ function findWinner(u,c){
     }
     return winner
 }
-/* function findWinner(u,c){
+*/ 
+ function findWinner(u,c){
     let combo = u+c
     switch(combo){
         case "rp":
         winner = "I"
+        score[1]++
         break
         case "pr":
         winner = "you"
+        score[0]++
         break
         case "ps":
         winner = "I"
+        score[1]++
         break
         case "sp":
         winner = "you"
+        score[0]++
         break
         case "sr":
         winner = "I"
+        score[1]++
         break
         case "rs":
         winner = "you"
+        score[0]++
         break
     }
     return winner
-} */
+} 
