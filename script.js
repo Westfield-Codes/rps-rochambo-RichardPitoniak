@@ -24,9 +24,9 @@ function main(){
         round++
     }
     if (score[0]>score[1]){
-        alert ("you win! The final score was " + score[1] + to + score[2] )
+        alert ("you win! The final score was " + score[0] + to + score[1] )
     }
-    else alert ("the computer wins! The final score was "  + score[1] + to + score[2] )
+    else alert ("the computer wins! The final score was "  + score[0] + to + score[1] )
 }
 function rpsRound(){
         u = userTurn()
