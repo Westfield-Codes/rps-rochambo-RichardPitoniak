@@ -36,7 +36,7 @@ function rpsRound(){
     }
 }
 
-function checkHalf(){
+/* function checkHalf(){
 if (score[0] > rounds%2){ 
     winner = " you " 
     return winner
@@ -46,8 +46,7 @@ else if (score[1] > rounds%2){
     return winner
 }
 else rpsRound()
-return false 
-}
+} */
 
 function userTurn(){
    let choice = prompt ("enter an r p or s")
