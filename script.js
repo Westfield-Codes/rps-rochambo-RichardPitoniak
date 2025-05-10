@@ -26,6 +26,7 @@ function main(){
     if (score[0]>score[1]){
         alert ("you win! The final score was " + score[0] + " to " + score[1] )
     }
+    else if (score[0]==score[1]) alert (" it's a tie! No one wins ")
     else alert ("the computer wins! The final score was "  + score[0] + " to " + score[1] )
 }
 function rpsRound(){
