@@ -8,6 +8,12 @@
 *     d. Move to next function
 *  3. System Test finished version (does it work right in all conditions?)
 */
+
+/* 
+*lets the user select the number of rounds, runs the game in a while loop, displays the final score
+@param: none
+@return: none
+*/
 var u = ""
 var c = ""
 const score = [0,0]
@@ -18,7 +24,7 @@ function main(){
         main()
     }
     let round = "1"
-    while (round <= rounds /* && !checkHalf()*/){
+    while (round <= rounds /* && !checkHalf(rounds)*/){
         alert ("round " + round + " of " + rounds  +"." + " the score is " + score[0] + " to " + score[1])
         rpsRound()
         round++
@@ -29,6 +35,12 @@ function main(){
     else if (score[0]==score[1]) alert (" it's a tie! No one wins ")
     else alert ("the computer wins! The final score was "  + score[0] + " to " + score[1] )
 }
+
+/* rpsRound
+*handles duplicates, calls findwinner to add points
+*@param: none
+*@return: winner
+*/
 function rpsRound(){
         u = userTurn()
         c = cpuTurn()
@@ -39,18 +51,21 @@ function rpsRound(){
     alert (" you chose " + u + " I chose " + c + " and " + winner + " got a point")
 }
 
-/* function checkHalf(){
-if (score[0] > rounds%2){ 
-    winner = " you " 
-    return winner
+/*function checkHalf(rounds){
+if (score[0]>rounds%2){ 
+     alert ("you win! you got more than half the possible points")
 }
 else if (score[1] > rounds%2){ 
-    winner = " I "
-    return winner
+    alert ("The computer wins! It got more than half the possible points")
 }
 else rpsRound()
 } */
 
+/* userTurn
+*lets the user enter an r p or s to play their turn
+*@param: none
+*@return: choice
+*/
 function userTurn(){
    let choice = prompt ("enter an r p or s")
    if (choice !== "r" && choice !== "p" && choice !== "s"){
@@ -60,6 +75,11 @@ function userTurn(){
    return choice
 }
 
+/* cpuTurn
+*randomly generates a number between 0 and 2 that corresponds to a cpu turn
+*@param: none
+*@return: r,p, or s
+*/
 function cpuTurn(){
     let choice = Math.floor(Math.random()*2)
     if (choice == 0) return "r"
@@ -82,6 +102,13 @@ function cpuTurn(){
     return winner
 }
 */ 
+
+/*findWinner
+*lists all possible outcomes, adds a point to the correct player
+*@param: u,c
+*@return: winner
+*/
+
  function findWinner(u,c){
     let combo = u+c
     switch(combo){
@@ -108,15 +135,6 @@ function cpuTurn(){
         case "rs":
         winner = "you"
         score[0]++
-        break
-        case "rr":
-        winner = "no one"
-        break
-        case "ss":
-        winner = "no one"
-        break
-        case "pp":
-        winner = "no one"
         break
     }
     return winner
