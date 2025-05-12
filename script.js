@@ -18,16 +18,12 @@ var u = ""
 var c = ""
 const score = [0,0]
 function main(){
-    let rounds = prompt ("how many rounds would you like to play?")
-    if ( rounds%2 == 0) {
-        alert ("the number of rounds has to be odd, try again")
-        main()
-    }
+    let winner =""
+    let rounds = setrounds()
+    
     let round = "1"
-    while (round <= rounds /* && !checkHalf(rounds)*/){
-        alert ("round " + round + " of " + rounds  +"." + " the score is " + score[0] + " to " + score[1])
-        rpsRound()
-        round++
+    while (round <= rounds){
+    
     }
     if (score[0]>score[1]){
         alert ("you win! The final score was " + score[0] + " to " + score[1] )
@@ -51,7 +47,7 @@ function rpsRound(){
     alert (" you chose " + u + " I chose " + c + " and " + winner + " got a point")
 }
 
-/*function checkHalf(rounds){
+/* function checkHalf(rounds){
 if (score[0]>rounds%2){ 
      alert ("you win! you got more than half the possible points")
 }
@@ -59,7 +55,9 @@ else if (score[1] > rounds%2){
     alert ("The computer wins! It got more than half the possible points")
 }
 else rpsRound()
-} */
+
+} 
+*/
 
 /* userTurn
 *lets the user enter an r p or s to play their turn
@@ -108,7 +106,6 @@ function cpuTurn(){
 *@param: u,c
 *@return: winner
 */
-
  function findWinner(u,c){
     let combo = u+c
     switch(combo){
