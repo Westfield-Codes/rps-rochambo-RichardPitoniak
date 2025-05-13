@@ -17,16 +17,17 @@
 var u = ""
 var c = ""
 const score = [0,0]
+
 function main(){
     let winner =""
     let rounds = setrounds()
-    
-    let round = "1"
-    if (round <= rounds){
-    winner = rpsRound
+    for (let round = 1; round <= rounds; round++){
+    winner = rpsRound()
     score[winner]++
     }
-    alert ("you have " + score[0] + "and I")
+    alert ("you have " + score[0] + " and I have " + score[1])
+    if (score[0] > score [1]) alert ("you win!")
+    else alert ("I win!")
 }
 
 /* rpsRound
@@ -35,26 +36,29 @@ function main(){
 *@return: winner
 */
 function rpsRound(){
-        u = userTurn()
-        c = cpuTurn()
-        if ( u == c) {
-            alert ("we both chose " + c + " no one gets points")
+        uChoice = 0
+        cChoice = 0
+        if ( uChoice == cChoice) {
+            uChoice = userTurn()
+            cChoice = cpuTurn()
+            if ( uChoice == cChoice) {
+                alert ("we both chose " + uChoice)
+            }
         }
-    winner = findWinner(u,c)
-    alert (" you chose " + u + " I chose " + c + " and " + winner + " got a point")
+    winner = findWinner(uChoice,cChoice)
+    let players = ["You","I"]
+    let win = players.indexOf(winner)
+   return win
 }
 
-/* function checkHalf(rounds){
-if (score[0]>rounds%2){ 
-     alert ("you win! you got more than half the possible points")
+function setrounds(){
+    let rounds = prompt ("how many rounds would you like to play?")
+    if (rounds%2 == 0){
+        alert (" the number of rounds must be odd")
+        return setrounds()
+    }
+    return rounds
 }
-else if (score[1] > rounds%2){ 
-    alert ("The computer wins! It got more than half the possible points")
-}
-else rpsRound()
-
-} 
-*/
 
 /* userTurn
 *lets the user enter an r p or s to play their turn
@@ -62,12 +66,15 @@ else rpsRound()
 *@return: choice
 */
 function userTurn(){
+    let moves = ["r","p","s"]
    let choice = prompt ("enter an r p or s")
-   if (choice !== "r" && choice !== "p" && choice !== "s"){
-    alert ("invalid input")
-    userTurn()
+   if (moves.includes(choice)){
+    return choice 
    }
-   return choice
+   else {
+    alert ("you must choose R P or S")
+    return userTurn()
+   }
 }
 
 /* cpuTurn
@@ -76,60 +83,24 @@ function userTurn(){
 *@return: r,p, or s
 */
 function cpuTurn(){
-    let choice = Math.floor(Math.random()*2)
-    if (choice == 0) return "r"
-    else if (choice == 1) return "p"
-    else return "s"
+let moves = ["r","p","s"]
+let choice = Math.floor(Math.random()*2)
+return (moves[choice])
 }
 
-/* function findWinner(u,c){
-    let combo = u+c
-    let match = ""
-    winner = ""
-    const winArray = [ ["r","p","I"],["p","r","you"],["p","s","I"]["s","p","you"],["s","r","I"],["r","s","you"] ]
-    for (let i = 0; i<winArray.length; i++){
-        match = winArray[i][0] + winArray[i][1]
-        if (match == combo){
-            winner = winArray[i][2]
-            break
-        }
-    }
-    return winner
-}
-*/ 
 
 /*findWinner
 *lists all possible outcomes, adds a point to the correct player
 *@param: u,c
 *@return: winner
 */
- function findWinner(u,c){
-    let combo = u+c
-    switch(combo){
-        case "rp":
-        winner = "I"
-        score[1]++
-        break
-        case "pr":
-        winner = "you"
-        score[0]++
-        break
-        case "ps":
-        winner = "I"
-        score[1]++
-        break
-        case "sp":
-        winner = "you"
-        score[0]++
-        break
-        case "sr":
-        winner = "I"
-        score[1]++
-        break
-        case "rs":
-        winner = "you"
-        score[0]++
-        break
-    }
-    return winner
-} 
+function findWinner(uChoice,cChoice){
+let winArray = [["r","p","I"],["r","s","You"],["p","s","I"],["p","r","You"],["s","r","I"],["s","p","You"]]
+let moves = uChoice+cChoice
+winner = ""
+while (winner == ""){
+let match = winArray[i][0]+winArray[i][1]
+if (moves == match) winner = winArray[i][2]
+}
+alert ("you chose " + uChoice + " I chose " + cChoice + winner + " won")
+}
