@@ -88,19 +88,17 @@ let choice = Math.floor(Math.random()*2)
 return (moves[choice])
 }
 
-
 /*findWinner
-*lists all possible outcomes, adds a point to the correct player
+*lists all possible outcomes in an array, alerts the winner 
 *@param: u,c
 *@return: winner
 */
 function findWinner(uChoice,cChoice){
 let winArray = [["r","p","I"],["r","s","You"],["p","s","I"],["p","r","You"],["s","r","I"],["s","p","You"]]
 let moves = uChoice+cChoice
-winner = ""
-while (winner == ""){
+for ( let i = 0; i <= winArray.length; i++ ){
 let match = winArray[i][0]+winArray[i][1]
 if (moves == match) winner = winArray[i][2]
 }
-alert ("you chose " + uChoice + " I chose " + cChoice + winner + " won")
+alert ("you chose " + uChoice + " I chose " + cChoice + " so " + winner + " won")
 }
