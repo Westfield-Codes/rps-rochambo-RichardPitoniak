@@ -96,7 +96,8 @@ return (moves[choice])
 function findWinner(uChoice,cChoice){
 let winArray = [["r","p","I"],["r","s","You"],["p","s","I"],["p","r","You"],["s","r","I"],["s","p","You"]]
 let moves = uChoice+cChoice
-for ( let i = 0; i <= winArray.length; i++ ){
+for ( let i = 0; i < winArray.length; i++ ){
+
 let match = winArray[i][0]+winArray[i][1]
 if (moves == match) winner = winArray[i][2]
 }
