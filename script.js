@@ -9,7 +9,9 @@ function main(){
     score[winner]++;
     if (score[0] > rounds/2 || score[1] > rounds/2 ) round = rounds 
   }
-  alert("You have "+score[0]+" and I have "+ score[1] + " so " + winnerWord + " won");
+  let gameWinner = "I"
+  if (score[0] > score[1]) gameWinner = "you"
+  alert("You have "+score[0]+" and I have "+ score[1] + " so " + gameWinner + " won!");
 }
 
 
@@ -41,7 +43,7 @@ function rpsRound() {
   winner = findWinner(u,c);
   let winValues = ["you", "I"];
   winnerWord = winValues[winner];
-  alert("You chose " + u + " and I chose "+ c +  " so " + winnerWord  +  " won!"); 
+  alert("You chose " + u + " and I chose "+ c +  " so " + winnerWord  +  " won"); 
   return winner; 
 }
 
