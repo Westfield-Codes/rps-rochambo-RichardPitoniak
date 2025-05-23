@@ -1,7 +1,7 @@
 /* Global Variables */
 let score = [0,0];
 
-function main(){
+function playRPS(){
   let winner = "";
   let rounds = setRounds();
   for (let round = 1; round <= rounds; round++){
@@ -13,7 +13,14 @@ function main(){
   if (score[0] > score[1]) gameWinner = "you"
   alert("You have "+score[0]+" and I have "+ score[1] + " so " + gameWinner + " won!");
 }
-
+function main(){
+  let sandbox = document.getElementById("sandbox");
+  let title = document.createElement("h1");
+  title.innerHTML="Hello World"
+  title.style="color:green"
+  title.addEventListener("click",playRPS)
+  sandbox.appendChild(title)
+}
 
 function setRounds() {
    let rounds = prompt("Number of rounds?");
