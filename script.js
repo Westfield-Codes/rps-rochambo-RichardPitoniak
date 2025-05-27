@@ -1,3 +1,11 @@
+/* UI */
+// hide start button after click 
+// add input box
+// add current value: enter odd number of rounds 
+// add submit button
+// submit calls setrounds 
+//setrounds needs to get value from input box
+
 /* Global Variables */
 let score = [0,0];
 
@@ -13,13 +21,15 @@ function playRPS(){
   if (score[0] > score[1]) gameWinner = "you"
   alert("You have "+score[0]+" and I have "+ score[1] + " so " + gameWinner + " won!");
 }
-function main(){
-  let sandbox = document.getElementById("sandbox");
-  let title = document.createElement("h1");
-  title.innerHTML="Hello World"
-  title.style="color:green"
-  title.addEventListener("click",playRPS)
-  sandbox.appendChild(title)
+
+function setup(){
+  let start = document.createElement("button");
+  start.innerHTML="Play RPS"
+  start.addEventListener("click", playRPS, function(){
+    start.remove()
+  })
+  document.body.appendChild(start)
+  
 }
 
 function setRounds() {
