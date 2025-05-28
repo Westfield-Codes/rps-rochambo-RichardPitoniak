@@ -10,32 +10,50 @@
 let score = [0,0];
 
 function playRPS(){
-  let winner = "";
-  let rounds = setRounds();
-  for (let round = 1; round <= rounds; round++){
-    winner = rpsRound();
-    score[winner]++;
-    if (score[0] > rounds/2 || score[1] > rounds/2 ) round = rounds 
-  }
-  let gameWinner = "I"
-  if (score[0] > score[1]) gameWinner = "you"
-  alert("You have "+score[0]+" and I have "+ score[1] + " so " + gameWinner + " won!");
+  let start=document.getElementById("start")
+  start.remove()
+  let paragraph = document.createElement("p")
+  paragraph.innerHTML="enter an odd number of rounds to play"
+  document.body.appendChild(paragraph)
+  let input = document.createElement("input")
+  input.id="input"
+  document.body.appendChild(input)
+ let enter = document.createElement("button")
+  enter.innerHTML="Confirm"
+  enter.style.margin="10px"
+  enter.addEventListener("click", getRounds)
+  document.body.appendChild(enter)
+  // let winner = "";
+  // let rounds = setRounds();
+  // for (let round = 1; round <= rounds; round++){
+  //   winner = rpsRound();
+  //   score[winner]++;
+  //   if (score[0] > rounds/2 || score[1] > rounds/2 ) round = rounds 
+  // }
+  // let gameWinner = "I"
+  // if (score[0] > score[1]) gameWinner = "you"
+  // alert("You have "+score[0]+" and I have "+ score[1] + " so " + gameWinner + " won!");
 }
+
+function getRounds(){
+let rounds = document.getElementById("input")
+rounds = rounds.value
+console.log(rounds)
+}
+
 
 function setup(){
   let start = document.createElement("button");
   start.innerHTML="Play RPS"
-  start.addEventListener("click", playRPS, function(){
-    start.remove()
-  })
+  start.addEventListener("click", playRPS)
+  start.id="start"
   document.body.appendChild(start)
-  
 }
 
 function setRounds() {
-   let rounds = prompt("Number of rounds?");
+  //  let rounds = prompt("Number of rounds?");
    if (rounds % 2 == 0) {
-    alert("must be odd, try again");
+    // alert("must be odd, try again");
     return setRounds();
    }
    return rounds;
@@ -54,13 +72,13 @@ function rpsRound() {
         u = userTurn();
         c = cpuTurn();
         if (u ==c) {
-            alert("We both chose "  + c);
+            // alert("We both chose "  + c);
         }
   }
   winner = findWinner(u,c);
   let winValues = ["you", "I"];
   winnerWord = winValues[winner];
-  alert("You chose " + u + " and I chose "+ c +  " so " + winnerWord  +  " won"); 
+  // alert("You chose " + u + " and I chose "+ c +  " so " + winnerWord  +  " won"); 
   return winner; 
 }
 
@@ -71,10 +89,10 @@ function rpsRound() {
  * @return:choice
  */
 function userTurn() {
-    let choice = prompt("enter r, p, or s");
+    // let choice = prompt("enter r, p, or s");
     const turn = ["r","p","s"];
     if (!turn.includes(choice)) {
-        alert("Invalid Input");
+        // alert("Invalid Input");
         return userTurn();
     }
     return choice;
