@@ -49,7 +49,7 @@ else {
   input.remove()
   enter.remove()
   paragraph.remove()
-   let choice = document.createElement("p")
+  let choice = document.createElement("p")
   choice.id="choice"
   choice.innerHTML="rock paper or scissors?"
   document.body.appendChild(choice)
