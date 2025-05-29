@@ -13,12 +13,14 @@ function playRPS(){
   let start=document.getElementById("start")
   start.remove()
   let paragraph = document.createElement("p")
+  paragraph.id="paragraph"
   paragraph.innerHTML="enter an odd number of rounds to play"
   document.body.appendChild(paragraph)
   let input = document.createElement("input")
   input.id="input"
   document.body.appendChild(input)
  let enter = document.createElement("button")
+  enter.id="enter"
   enter.innerHTML="Confirm"
   enter.style.margin="10px"
   enter.addEventListener("click", getRounds)
@@ -38,7 +40,45 @@ function playRPS(){
 function getRounds(){
 let rounds = document.getElementById("input")
 rounds = rounds.value
-console.log(rounds)
+parseInt(rounds)
+if (rounds%2 == 0) alert ("must be odd, try again")
+else {
+  let input = document.getElementById("input")
+  let enter = document.getElementById("enter")
+  let paragraph = document.getElementById("paragraph")
+  input.remove()
+  enter.remove()
+  paragraph.remove()
+   let choice = document.createElement("p")
+  choice.id="choice"
+  choice.innerHTML="rock paper or scissors?"
+  document.body.appendChild(choice)
+
+  let rock = document.createElement("button")
+  rock.id="rock"
+  rock.innerHTML="Rock"
+  rock.style.margin="10px"
+  rock.style.backgroundColor="#e27272"
+  rock.style.borderRadius="3px"
+  // rock.addEventListener()
+  document.body.appendChild(rock)
+  let paper = document.createElement("button")
+  paper.id="paper"
+  paper.innerHTML="Paper"
+  paper.style.margin="10px"
+  paper.style.backgroundColor="#86e272"
+  paper.style.borderRadius="3px"
+  // paper.addEventListener()
+  document.body.appendChild(paper)
+    let scissors = document.createElement("button")
+  scissors.id="scissors"
+  scissors.innerHTML="Scissors"
+  scissors.style.margin="10px"
+  scissors.style.backgroundColor="#72d5e2"
+  scissors.style.borderRadius="3px"
+  // scissors.addEventListener()
+  document.body.appendChild(scissors)
+}
 }
 
 
