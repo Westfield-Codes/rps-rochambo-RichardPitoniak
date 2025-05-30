@@ -53,32 +53,23 @@ else {
   choice.id="choice"
   choice.innerHTML="rock paper or scissors?"
   document.body.appendChild(choice)
-
-  let rock = document.createElement("button")
-  rock.id="rock"
-  rock.innerHTML="Rock"
-  rock.style.margin="10px"
-  rock.style.backgroundColor="#e27272"
-  rock.style.borderRadius="3px"
-  // rock.addEventListener()
-  document.body.appendChild(rock)
-  let paper = document.createElement("button")
-  paper.id="paper"
-  paper.innerHTML="Paper"
-  paper.style.margin="10px"
-  paper.style.backgroundColor="#86e272"
-  paper.style.borderRadius="3px"
-  // paper.addEventListener()
-  document.body.appendChild(paper)
-    let scissors = document.createElement("button")
-  scissors.id="scissors"
-  scissors.innerHTML="Scissors"
-  scissors.style.margin="10px"
-  scissors.style.backgroundColor="#72d5e2"
-  scissors.style.borderRadius="3px"
-  // scissors.addEventListener()
-  document.body.appendChild(scissors)
+  makeButtons()
 }
+}
+
+function makeButtons(){
+  let buttons = [["Rock","#e27272","r"],["Paper","#86e272","p"],["Scissors","#72d5e2","s"]]
+  for (let button = 0; button < 3; button++){
+    let b = document.createElement("button")
+    b.innerHTML=buttons[button][0]
+    b.style.backgroundColor=buttons[button][1]
+    b.addEventListener("click", function(){
+      userTurn(buttons[button][2]);
+    }, false);
+    b.style.margin="10px"
+     b.style.borderRadius="3px"
+    document.body.appendChild(b)
+  }
 }
 
 
@@ -128,14 +119,10 @@ function rpsRound() {
  * @param:none
  * @return:choice
  */
-function userTurn() {
+function userTurn(choice) {
     // let choice = prompt("enter r, p, or s");
     const turn = ["r","p","s"];
-    if (!turn.includes(choice)) {
-        // alert("Invalid Input");
-        return userTurn();
-    }
-    return choice;
+    cpuTurn(choice)
 }
 
 /* cpuTurn
@@ -143,10 +130,10 @@ function userTurn() {
  * @param:none
  * @return: choice
  */
-function cpuTurn() {
+function cpuTurn(u) {
     let choice = Math.floor(Math.random()*3);
     let moves = ["r","p","s"];
-    return moves[choice];
+    findWinner(u,moves[choice])
 }
 
 /* findWinner
