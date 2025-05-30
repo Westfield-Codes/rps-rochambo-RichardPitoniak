@@ -133,7 +133,9 @@ function userTurn(choice) {
 function cpuTurn(u) {
     let choice = Math.floor(Math.random()*3);
     let moves = ["r","p","s"];
-    findWinner(u,moves[choice])
+    let c = moves[choice]
+    console.log(u,c)
+    findWinner(u,c)
 }
 
 /* findWinner
@@ -155,5 +157,10 @@ function findWinner(u,c) {
       break;
     }
   }
-  return winner;
+  if (u == c){
+    alert ("we both chose the same thing so no one gets a point")
+  }
+  let winValues = ["you", "I"];
+  winnerWord = winValues[winner];
+  alert("You chose " + u + " and I chose "+ c +  " so " + winnerWord  +  " won"); 
 }
